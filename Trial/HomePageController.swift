@@ -95,14 +95,14 @@ class HomePageController: UIViewController, UINavigationControllerDelegate, UIIm
             KCSStoreKeyCollectionTemplateClass : Cloths.self
             ])
         
-        let someImage = Cloths()
-        someImage.price = priceOutlet.text
-        someImage.size = sizeOutlet.text
-        someImage.category = categoryOutlet.text
-        someImage.someImage = imageView.image
-        print(someImage.someImage)
+        let cloth = Cloths()
+        cloth.mPrice = priceOutlet.text as! Int
+        cloth.mSize = sizeOutlet.text
+        cloth.mCategory = categoryOutlet.text
+        cloth.mImage = imageView.image
+        print(cloth.mImage)
         
-        someImageStore.saveObject(someImage, withCompletionBlock: {
+        someImageStore.saveObject(cloth, withCompletionBlock: {
 
             (objectsOrNil:[AnyObject]!, errorOrNil: NSError!) -> Void in
             print("Image Object Saved")
