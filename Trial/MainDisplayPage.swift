@@ -106,6 +106,17 @@ class MainDisplayController: UITableViewController {
     }
     
     
+   
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "paymentShow" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let object = valueFromQuery[indexPath.row]
+                let nextController = segue.destinationViewController  as! PayViewController
+                nextController.detailItem = object
+            }
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
