@@ -17,15 +17,10 @@ class Cloths: NSObject {
     var mImage: UIImage?
     var entityId: String?
     
-    
-
-    
  override init(){
         
         super.init();
     }
-    
-
     
     override func hostToKinveyPropertyMapping() -> [NSObject : AnyObject]! {
         return [
@@ -35,6 +30,7 @@ class Cloths: NSObject {
             "mSize" : "size",
             "mCategory" : "category",
             "mImage" : "mImage",
+        
         ]
     }
     
@@ -116,6 +112,7 @@ class HomePageController: UIViewController, UINavigationControllerDelegate, UIIm
         cloth.mSize = self.sizeOutlet.text
         cloth.mCategory = self.categoryOutlet.text
         cloth.mImage = self.imageView.image!
+            cloth.mName = KCSUser.activeUser().username;
         //print(cloth.mImage)
         
      
