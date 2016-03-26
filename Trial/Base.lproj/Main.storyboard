@@ -234,8 +234,11 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="categoryOutlet" destination="6s8-an-tgp" id="SK9-A1-BF5"/>
                         <outlet property="imageOutlet" destination="feG-m6-raK" id="6e2-lc-dAu"/>
                         <outlet property="imageView" destination="feG-m6-raK" id="Vrf-YE-BTE"/>
+                        <outlet property="priceOutlet" destination="xF1-43-Q27" id="2BO-BR-Kl3"/>
+                        <outlet property="sizeOutlet" destination="KFO-cr-ihu" id="sHy-NK-ykL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c0A-X9-2zn" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -8,17 +8,19 @@
 
 import UIKit
 
-class SomeImage: NSObject {
-    var someName: String?
-    var somePlace: String?
+class Dress: NSObject {
+    var price: String?
+    var size: String?
+    var category: String?
     var someId: String?
     var someImage: UIImage?
     
     override func hostToKinveyPropertyMapping() -> [NSObject : AnyObject]! {
         return [
             "someId" : KCSEntityKeyId,
-            "someName" : "someName",
-            "somePlace" : "somePlace",
+            "price" : "price",
+            "size" : "size",
+            "category" : "category",
             "someImage" : "someImage",
         ]
     }
@@ -41,6 +43,13 @@ class HomePageController: UIViewController, UINavigationControllerDelegate, UIIm
     @IBOutlet var imageOutlet: UIImageView!
     @IBOutlet var imageView: UIImageView!
     
+    @IBOutlet var priceOutlet: UITextField!
+    
+    
+    @IBOutlet var sizeOutlet: UITextField!
+    
+    
+    @IBOutlet var categoryOutlet: UITextField!
     
     
     let imagePicker = UIImagePickerController()
@@ -59,13 +68,14 @@ class HomePageController: UIViewController, UINavigationControllerDelegate, UIIm
     @IBAction func saveImageWithObject(sender: AnyObject) {
         
         let someImageStore = KCSLinkedAppdataStore.storeWithOptions([
-            KCSStoreKeyCollectionName: "Some-Image-collection",
-            KCSStoreKeyCollectionTemplateClass : SomeImage.self
+            KCSStoreKeyCollectionName: "Dress",
+            KCSStoreKeyCollectionTemplateClass : Dress.self
             ])
         
-        let someImage = SomeImage()
-        someImage.someName = "Object with Image"
-        someImage.somePlace = "New York, NY, Haribol"
+        let someImage = Dress()
+        someImage.price = priceOutlet.text
+        someImage.size = sizeOutlet.text
+        someImage.category = categoryOutlet.text
         someImage.someImage = imageView.image
         print(someImage.someImage)
         
@@ -76,16 +86,6 @@ class HomePageController: UIViewController, UINavigationControllerDelegate, UIIm
             }, withProgressBlock: nil)
     }
    
-  
-    
-
-    
-    @IBAction func LogOut(sender: AnyObject) {
-        KCSUser.activeUser().logout()
-        self.performSegueWithIdentifier("loginScreen", sender: self)
-    }
-    
-    
     
     @IBAction func TakePhotoButtonTapped(sender: AnyObject) {
         imagePicker.allowsEditing = false
