@@ -89,20 +89,13 @@ class MainDisplayController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! TableViewCell;
-        
-        print("---------------------------")
-       
-       
+      
         
         
         var cloth = valueFromQuery[indexPath.row];
         print(cloth.mPrice)
         
-        
 
-        
-        
-        
         
         return cell;
     }
