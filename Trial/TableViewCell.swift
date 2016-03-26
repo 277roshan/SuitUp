@@ -14,7 +14,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var mImageView: UIImageView!
  
     
-    @IBOutlet weak var mDressName: UILabel!
+   
     
     @IBOutlet weak var mCategory: UILabel!
     
