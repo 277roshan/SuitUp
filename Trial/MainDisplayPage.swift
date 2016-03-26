@@ -19,7 +19,7 @@ class MainDisplayController: UITableViewController {
     }
 
     
-    var valueFromQuery: [AnyObject] = []
+    var valueFromQuery: [Cloths] = []
     var clotharray: [Cloths] = [Cloths]();
   // var item1: Cloths = Cloths(name: "Preksha", category: "Yehi", size: "S", price:12, image: UIImage(named: "Image")!);
     
@@ -34,14 +34,15 @@ class MainDisplayController: UITableViewController {
         let collection = KCSCollection(fromString: "Cloths", ofClass: Cloths.self)
         let store = KCSAppdataStore(collection: collection, options: nil)
         store.queryWithQuery(
-            KCSQuery(),
+            KCSQuery(onField: "price", withExactMatchForValue: "34"),
             withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
                 
                 if errorOrNil == nil {
                     //NSLog("successful reload: %@", objectsOrNil as! NSObject) // event updated
                     
-                    self.valueFromQuery = objectsOrNil
-                    print(self.valueFromQuery)
+                    self.valueFromQuery = objectsOrNil as! NSObject as! [Cloths]
+                    //print(self.valueFromQuery)
+                    
                     
                     //print(self.valueFromQuery)
                     
@@ -81,7 +82,7 @@ class MainDisplayController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print (self.valueFromQuery);
+        
         return self.valueFromQuery.count;
         
     }
@@ -90,13 +91,17 @@ class MainDisplayController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! TableViewCell;
         
         print("---------------------------")
-        print(self.valueFromQuery)
-        print(self.valueFromQuery)
+       
+       
         
         
-        let cloth = valueFromQuery[indexPath.row];
-       // cell.mSize.text = String(cloth.mSize);
-       // NSLog("image is ", cloth.mPrice);
+        var cloth = valueFromQuery[indexPath.row];
+        print(cloth.mPrice)
+        
+        
+
+        
+        
         
         
         return cell;

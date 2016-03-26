@@ -137,7 +137,7 @@ class HomePageController: UIViewController, UINavigationControllerDelegate, UIIm
         cloth.mSize = self.sizeOutlet.text
         cloth.mCategory = self.categoryOutlet.text
         cloth.mImage = self.imageView.image!
-        print(cloth.mImage)
+        //print(cloth.mImage)
         
      
         
