@@ -9,24 +9,7 @@
 import UIKit
 
 
-class Event : NSObject {    //all NSObjects in Kinvey implicitly implement KCSPersistable
-    var entityId: String? //Kinvey entity _id
-    var name: String?
-    var date: NSDate?
-    var location: String?
-    var metadata: KCSMetadata? //Kinvey metadata, optional
-    
-    
-    override func hostToKinveyPropertyMapping() -> [NSObject : AnyObject]! {
-        return [
-            "entityId" : KCSEntityKeyId, //the required _id field
-            "name" : "name",
-            "date" : "date",
-            "location" : "location",
-            "metadata" : KCSEntityKeyMetadata //optional _metadata field
-        ]
-    }
-}
+
 
 class ViewController: UIViewController {
     
@@ -112,32 +95,32 @@ class ViewController: UIViewController {
             print("already created")
         }
     }
-    
-    func save(){
-        let store = KCSAppdataStore.storeWithOptions([
-            KCSStoreKeyCollectionName : "Events",
-            KCSStoreKeyCollectionTemplateClass : Event.self
-            ])
-        
-        let event = Event()
-        event.name = "Launch Party"
-        event.location = "Kinvey HQ"
-        event.date = NSDate(timeIntervalSince1970: 1352149171) //sample date
-        store.saveObject(
-            event,
-            withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
-                if errorOrNil != nil {
-                    //save failed
-                    NSLog("Save failed, with error: %@", errorOrNil.localizedFailureReason!)
-                } else {
-                    //save was successful
-                    NSLog("Successfully saved event (id='%@').", (objectsOrNil[0] as! NSObject).kinveyObjectId())
-                }
-            },
-            withProgressBlock: nil
-        )
-        
-    }
+//    
+//    func save(){
+//        let store = KCSAppdataStore.storeWithOptions([
+//            KCSStoreKeyCollectionName : "CLoths",
+//            KCSStoreKeyCollectionTemplateClass : Cloths.self
+//            ])
+//        
+//        let event = Cloths()
+//        event.mname = "Launch Party"
+//        event.location = "Kinvey HQ"
+//        event.date = NSDate(timeIntervalSince1970: 1352149171) //sample date
+//        store.saveObject(
+//            event,
+//            withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
+//                if errorOrNil != nil {
+//                    //save failed
+//                    NSLog("Save failed, with error: %@", errorOrNil.localizedFailureReason!)
+//                } else {
+//                    //save was successful
+//                    NSLog("Successfully saved event (id='%@').", (objectsOrNil[0] as! NSObject).kinveyObjectId())
+//                }
+//            },
+//            withProgressBlock: nil
+//        )
+//        
+//    }
     
     
         

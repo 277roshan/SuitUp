@@ -12,12 +12,51 @@ class MainDisplayController: UITableViewController {
 
 
 
+
     @IBAction func AddDressAction(sender: AnyObject) {
         self.performSegueWithIdentifier("addDress", sender: self)
         
     }
-    
-    
-   
 
+var clotharray: [Cloths] = [Cloths]();
+   var item1: Cloths = Cloths(name: "Preksha", category: "Yehi", size: "S", price:12, image: UIImage(named: "Image")!);
+    
+    override func viewDidLoad() {
+        print (UIImage(named: "Image"));
+        clotharray.append(item1);
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1;
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print (self.clotharray.count);
+        return self.clotharray.count;
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! TableViewCell;
+        
+        let cloth = clotharray[indexPath.row];
+        cell.mSize.text = cloth.mSize;
+        cell.mImageView.image = cloth.mImage;
+        print (cloth.mSize);
+//
+//        cell.label1.text = item.name;
+//        // cell.label2.text = item.number as! string;
+//        cell.label2.text = item.info;
+//        cell.label4.text = item.random;
+        
+        return cell;
+    }
 }
+

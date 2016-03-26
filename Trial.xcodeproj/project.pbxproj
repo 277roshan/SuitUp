@@ -25,6 +25,7 @@
 		741BD2431C8F69DE002AEE43 /* KinveyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 741BD2421C8F69DE002AEE43 /* KinveyKit.framework */; };
 		7473E9991CA631D7000727F4 /* MainDisplayPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7473E9981CA631D7000727F4 /* MainDisplayPage.swift */; };
 		74F5F0E31CA0FF5A00CC702F /* HomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F5F0E21CA0FF5A00CC702F /* HomePageController.swift */; };
+		BCEE22341CA63C3D001FE210 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE22331CA63C3D001FE210 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		741BD2451C8F6A91002AEE43 /* Trial-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Trial-Bridging-Header.h"; sourceTree = "<group>"; };
 		7473E9981CA631D7000727F4 /* MainDisplayPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDisplayPage.swift; sourceTree = "<group>"; };
 		74F5F0E21CA0FF5A00CC702F /* HomePageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageController.swift; sourceTree = "<group>"; };
+		BCEE22331CA63C3D001FE210 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				741BD2451C8F6A91002AEE43 /* Trial-Bridging-Header.h */,
 				74F5F0E21CA0FF5A00CC702F /* HomePageController.swift */,
 				7473E9981CA631D7000727F4 /* MainDisplayPage.swift */,
+				BCEE22331CA63C3D001FE210 /* TableViewCell.swift */,
 			);
 			path = Trial;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCEE22341CA63C3D001FE210 /* TableViewCell.swift in Sources */,
 				7473E9991CA631D7000727F4 /* MainDisplayPage.swift in Sources */,
 				741BD2061C8F68AD002AEE43 /* ViewController.swift in Sources */,
 				741BD2041C8F68AD002AEE43 /* AppDelegate.swift in Sources */,

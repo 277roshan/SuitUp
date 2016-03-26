@@ -8,12 +8,34 @@
 
 import UIKit
 
-class Dress: NSObject {
-    var price: String?
-    var size: String?
-    var category: String?
-    var someId: String?
-    var someImage: UIImage?
+
+class Cloths: NSObject {
+    var mName: String?
+    var mCategory: String?
+    var mSize: String?
+    var mPrice: Int?
+    var mImage: UIImage?
+    
+    
+    
+    init(name:String, category:String, size:String, price:Int, image:UIImage){
+        
+        self.mName = name;
+        self.mCategory = category;
+        self.mSize = size;
+        self.mPrice = price;
+        self.mImage = image
+        
+        super.init();
+        
+    }
+    
+    override init(){
+        
+        super.init();
+    }
+    
+
     
     override func hostToKinveyPropertyMapping() -> [NSObject : AnyObject]! {
         return [
@@ -68,11 +90,12 @@ class HomePageController: UIViewController, UINavigationControllerDelegate, UIIm
     @IBAction func saveImageWithObject(sender: AnyObject) {
         
         let someImageStore = KCSLinkedAppdataStore.storeWithOptions([
+
             KCSStoreKeyCollectionName: "Dress",
-            KCSStoreKeyCollectionTemplateClass : Dress.self
+            KCSStoreKeyCollectionTemplateClass : Cloths.self
             ])
         
-        let someImage = Dress()
+        let someImage = Cloths()
         someImage.price = priceOutlet.text
         someImage.size = sizeOutlet.text
         someImage.category = categoryOutlet.text
@@ -80,6 +103,7 @@ class HomePageController: UIViewController, UINavigationControllerDelegate, UIIm
         print(someImage.someImage)
         
         someImageStore.saveObject(someImage, withCompletionBlock: {
+
             (objectsOrNil:[AnyObject]!, errorOrNil: NSError!) -> Void in
             print("Image Object Saved")
             
