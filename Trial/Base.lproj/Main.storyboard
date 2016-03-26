@@ -126,9 +126,15 @@
                                 <rect key="frame" x="447" y="7" width="133" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add Dress"/>
+                                <connections>
+                                    <action selector="AddDressAction:" destination="oJi-fG-0g2" eventType="touchUpInside" id="FgB-84-UKK"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="A9p-Uv-wXJ" kind="show" identifier="addDress" id="cRQ-at-mzT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fqb-d3-T94" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="gA3-Zk-G7M" userLabel="Exit" sceneMemberID="exit"/>
@@ -209,25 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c0A-X9-2zn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1071" y="1103"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="0km-GP-X19">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3TE-M4-mqM" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="k3k-V2-Mnf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="A9p-Uv-wXJ" kind="relationship" relationship="rootViewController" id="l5y-tf-tgO"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IYA-sh-hQK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="374" y="1096"/>
+            <point key="canvasLocation" x="2694" y="277"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="e3c-G5-xhs">

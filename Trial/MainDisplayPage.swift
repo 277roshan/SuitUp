@@ -12,6 +12,12 @@ class MainDisplayController: UITableViewController {
 
 
 
+    @IBAction func AddDressAction(sender: AnyObject) {
+        self.performSegueWithIdentifier("addDress", sender: self)
+        
+    }
+    
+    
    
 
 }
