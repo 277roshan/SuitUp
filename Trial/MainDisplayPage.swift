@@ -53,12 +53,46 @@ class MainDisplayController: UITableViewController {
                     NSLog("error occurred: %@", errorOrNil)
                 }
                 
+            },
+            withProgressBlock: nil
+        )
+
+        
+        //clotharray.append(item1);
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        let collection = KCSCollection(fromString: "Cloths", ofClass: Cloths.self)
+        let store = KCSAppdataStore(collection: collection, options: nil)
+        store.queryWithQuery(
+            KCSQuery(onField: "price", usingConditional: KCSQueryConditional.KCSGreaterThan, forValue:0),
+            withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
+                
+                if errorOrNil == nil {
+                    //NSLog("successful reload: %@", objectsOrNil as! NSObject) // event updated
+                    
+                    self.valueFromQuery = objectsOrNil as! NSObject as! [Cloths]
+                    //print(self.valueFromQuery)
+                    
+                    
+                    //print(self.valueFromQuery)
+                    
+                    self.tableView.reloadData()
+                    
+                    
+                } else {
+                    NSLog("error occurred: %@", errorOrNil)
+                }
+                
                 
                 
             },
             withProgressBlock: nil
         )
-
+        
         
         
         
@@ -67,9 +101,11 @@ class MainDisplayController: UITableViewController {
         print (UIImage(named: "Image"));
         
         //clotharray.append(item1);
-        super.viewDidLoad()
+        super.viewWillAppear(true)
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -93,8 +129,33 @@ class MainDisplayController: UITableViewController {
         
         
         var cloth = valueFromQuery[indexPath.row];
-        print(cloth.mPrice)
         
+        cell.mImageView.image = cloth.mImage
+        cell.mPrice.text = String(cloth.mPrice!)
+        cell.mCategory.text = cloth.mCategory
+        cell.mSize.text = cloth.mSize
+        print(cloth.mImage)
+        
+//        KCSFileStore.downloadData(
+//            cloth.mImage,
+//            completionBlock: { (downloadedResources: [AnyObject]!, error: NSError!) -> Void in
+//                if error == nil {
+//                    let file = downloadedResources[0] as! KCSFile
+//                    let fileData = file.data
+//                    var outputObject: NSObject! = nil
+//                    if file.mimeType.hasPrefix("text") {
+//                        outputObject = NSString(data: fileData, encoding: NSUTF8StringEncoding)
+//                    } else if file.mimeType.hasPrefix("image") {
+//                        outputObject = UIImage(data: fileData)
+//                    }
+//                    NSLog("downloaded: %@", outputObject)
+//                } else {
+//                    NSLog("Got an error: %@", error)
+//                }
+//            },
+//            progressBlock: nil
+//        )
+//        
 
         
         return cell;

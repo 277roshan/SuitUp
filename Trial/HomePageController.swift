@@ -13,7 +13,7 @@ class Cloths: NSObject {
     var mName: String?
     var mCategory: String?
     var mSize: String?
-    var mPrice: String?
+    var mPrice: NSNumber?
     var mImage: UIImage?
     var entityId: String?
     
@@ -89,28 +89,7 @@ class HomePageController: UIViewController, UINavigationControllerDelegate, UIIm
 //            withProgressBlock: nil
 //        )
         
-        let collection = KCSCollection(fromString: "Cloths", ofClass: Cloths.self)
-        let store = KCSAppdataStore(collection: collection, options: nil)
-        store.queryWithQuery(
-            KCSQuery(onField: "size", withExactMatchForValue: "S"),
-            withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
-            
-                if errorOrNil == nil {
-                    //NSLog("successful reload: %@", objectsOrNil as! NSObject) // event updated
-                    
-                    print(objectsOrNil)
-                    
-                    
-                } else {
-                    NSLog("error occurred: %@", errorOrNil)
-                }
-            
-            
-            
-            },
-            withProgressBlock: nil
-        )
-
+        
         imagePicker.delegate = self
         print(KCSUser.activeUser().username)
     }
@@ -133,7 +112,7 @@ class HomePageController: UIViewController, UINavigationControllerDelegate, UIIm
             
         
         let cloth = Cloths()
-        cloth.mPrice = self.priceOutlet.text;
+        cloth.mPrice = Int(self.priceOutlet.text!)
         cloth.mSize = self.sizeOutlet.text
         cloth.mCategory = self.categoryOutlet.text
         cloth.mImage = self.imageView.image!
