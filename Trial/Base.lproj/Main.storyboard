@@ -40,7 +40,6 @@
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="LoginUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xi1-G5-qLJ"/>
-                                    <segue destination="hV3-5Z-caS" kind="show" identifier="homePage" id="RFk-rh-zoz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zk2-2H-Yy5">
@@ -81,6 +80,7 @@
                     <connections>
                         <outlet property="PasswordValue" destination="jiA-km-Pn9" id="I4j-fm-MkR"/>
                         <outlet property="UserNameValue" destination="dHf-e0-Ghf" id="GMe-bP-DB5"/>
+                        <segue destination="hV3-5Z-caS" kind="show" identifier="homePage" id="nrb-hI-ajW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -116,6 +116,9 @@
                                 <rect key="frame" x="20" y="7" width="133" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <segue destination="gA3-Zk-G7M" kind="unwind" unwindAction="unwindToVC:" id="pC7-wJ-es9"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="hRf-kw-FQ3">
@@ -128,6 +131,7 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fqb-d3-T94" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gA3-Zk-G7M" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1926" y="277"/>
         </scene>
