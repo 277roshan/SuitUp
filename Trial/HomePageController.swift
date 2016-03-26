@@ -13,24 +13,14 @@ class Cloths: NSObject {
     var mName: String?
     var mCategory: String?
     var mSize: String?
-    var mPrice: Int?
+    var mPrice: String?
     var mImage: UIImage?
+    var entityId: String?
     
     
+
     
-    init(name:String, category:String, size:String, price:Int, image:UIImage){
-        
-        self.mName = name;
-        self.mCategory = category;
-        self.mSize = size;
-        self.mPrice = price;
-        self.mImage = image
-        
-        super.init();
-        
-    }
-    
-    override init(){
+ override init(){
         
         super.init();
     }
@@ -39,23 +29,24 @@ class Cloths: NSObject {
     
     override func hostToKinveyPropertyMapping() -> [NSObject : AnyObject]! {
         return [
-            "someId" : KCSEntityKeyId,
-            "price" : "price",
-            "size" : "size",
-            "category" : "category",
-            "someImage" : "someImage",
+            "entityId": KCSEntityKeyId,
+            "mName" : "name",
+            "mPrice" : "price",
+            "mSize" : "size",
+            "mCategory" : "category",
+            "mImage" : "mImage",
         ]
     }
     
     override class func kinveyPropertyToCollectionMapping() -> [NSObject : AnyObject]! {
         return [
-            "someImage" : KCSFileStoreCollectionName,
+            "mImage" : KCSFileStoreCollectionName,
             
         ]
     }
     
     override func referenceKinveyPropertiesOfObjectsToSave() -> [AnyObject]! {
-        return ["someImage"]
+        return ["mImage"]
     }
 }
 
@@ -91,23 +82,49 @@ class HomePageController: UIViewController, UINavigationControllerDelegate, UIIm
         
         let someImageStore = KCSLinkedAppdataStore.storeWithOptions([
 
-            KCSStoreKeyCollectionName: "Dress",
+            KCSStoreKeyCollectionName: "Cloths",
             KCSStoreKeyCollectionTemplateClass : Cloths.self
             ])
         
+        
+        let data = UIImageJPEGRepresentation(imageView.image!, 0.9)
+        KCSFileStore.uploadData(data, options: nil, completionBlock: {(uploadInfo: KCSFile!, error: NSError!) -> Void in
+            print ("hello")
+            print("file id is\(uploadInfo.fileId)");
+        
+            
+        
         let cloth = Cloths()
-        cloth.mPrice = priceOutlet.text as! Int
-        cloth.mSize = sizeOutlet.text
-        cloth.mCategory = categoryOutlet.text
-        cloth.mImage = imageView.image
+        cloth.mPrice = self.priceOutlet.text;
+        cloth.mSize = self.sizeOutlet.text
+        cloth.mCategory = self.categoryOutlet.text
+        cloth.mImage = self.imageView.image!
         print(cloth.mImage)
+        
+     
+        
+        
         
         someImageStore.saveObject(cloth, withCompletionBlock: {
 
             (objectsOrNil:[AnyObject]!, errorOrNil: NSError!) -> Void in
             print("Image Object Saved")
             
-            }, withProgressBlock: nil)
+            
+            
+            if errorOrNil != nil {
+                //save failed
+                NSLog("Save failed, with error: %@", errorOrNil.localizedFailureReason!)
+            } else {
+                //save was successful
+                NSLog("Successfully saved event (id='%@').", (objectsOrNil[0] as! NSObject).kinveyObjectId())
+            }
+            },
+            withProgressBlock: nil
+            )
+        
+            
+            }, progressBlock: nil)
     }
    
     

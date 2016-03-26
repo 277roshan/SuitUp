@@ -19,11 +19,41 @@ class MainDisplayController: UITableViewController {
     }
 
 var clotharray: [Cloths] = [Cloths]();
-   var item1: Cloths = Cloths(name: "Preksha", category: "Yehi", size: "S", price:12, image: UIImage(named: "Image")!);
+  // var item1: Cloths = Cloths(name: "Preksha", category: "Yehi", size: "S", price:12, image: UIImage(named: "Image")!);
     
     override func viewDidLoad() {
         print (UIImage(named: "Image"));
-        clotharray.append(item1);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //clotharray.append(item1);
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
