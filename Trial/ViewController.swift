@@ -27,8 +27,8 @@ class ViewController: UIViewController {
         
         
         KCSClient.sharedClient().initializeKinveyServiceForAppKey(
-            "kid_byzC3GBGlW",
-            withAppSecret: "a044eea3219e41f08896fe793ba1be09",
+            "kid_b1lkmyrzx-",
+            withAppSecret: "c709c38911844057969b7f0e71646cc3",
             usingOptions: nil
         )
         
