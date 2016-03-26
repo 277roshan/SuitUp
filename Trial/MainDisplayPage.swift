@@ -78,13 +78,7 @@ var clotharray: [Cloths] = [Cloths]();
         
         let cloth = clotharray[indexPath.row];
         cell.mSize.text = cloth.mSize;
-        cell.mImageView.image = cloth.mImage;
-        print (cloth.mSize);
-//
-//        cell.label1.text = item.name;
-//        // cell.label2.text = item.number as! string;
-//        cell.label2.text = item.info;
-//        cell.label4.text = item.random;
+        
         
         return cell;
     }
