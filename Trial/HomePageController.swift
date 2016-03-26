@@ -72,6 +72,44 @@ class HomePageController: UIViewController, UINavigationControllerDelegate, UIIm
         // Do any additional setup after loading the view, typically from a nib.
         
         
+        
+//        store.loadObjectWithID(
+//            "56f623061b6974a80218d46d",
+//            withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
+//                if errorOrNil == nil {
+//                    NSLog("successful reload: %@", objectsOrNil[0] as! NSObject) // event updated
+//                    
+//                    print(objectsOrNil[0].mSize)
+//                    
+//                    
+//                } else {
+//                    NSLog("error occurred: %@", errorOrNil)
+//                }
+//            },
+//            withProgressBlock: nil
+//        )
+        
+        let collection = KCSCollection(fromString: "Cloths", ofClass: Cloths.self)
+        let store = KCSAppdataStore(collection: collection, options: nil)
+        store.queryWithQuery(
+            KCSQuery(onField: "size", withExactMatchForValue: "S"),
+            withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
+            
+                if errorOrNil == nil {
+                    //NSLog("successful reload: %@", objectsOrNil as! NSObject) // event updated
+                    
+                    print(objectsOrNil)
+                    
+                    
+                } else {
+                    NSLog("error occurred: %@", errorOrNil)
+                }
+            
+            
+            
+            },
+            withProgressBlock: nil
+        )
 
         imagePicker.delegate = self
         print(KCSUser.activeUser().username)

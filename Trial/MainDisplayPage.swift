@@ -18,40 +18,52 @@ class MainDisplayController: UITableViewController {
         
     }
 
-var clotharray: [Cloths] = [Cloths]();
+    
+    var valueFromQuery: [AnyObject] = []
+    var clotharray: [Cloths] = [Cloths]();
   // var item1: Cloths = Cloths(name: "Preksha", category: "Yehi", size: "S", price:12, image: UIImage(named: "Image")!);
     
+    
+    
+    
+   
+    
+    
     override func viewDidLoad() {
+        
+        let collection = KCSCollection(fromString: "Cloths", ofClass: Cloths.self)
+        let store = KCSAppdataStore(collection: collection, options: nil)
+        store.queryWithQuery(
+            KCSQuery(),
+            withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
+                
+                if errorOrNil == nil {
+                    //NSLog("successful reload: %@", objectsOrNil as! NSObject) // event updated
+                    
+                    self.valueFromQuery = objectsOrNil
+                    print(self.valueFromQuery)
+                    
+                    //print(self.valueFromQuery)
+                    
+                    self.tableView.reloadData()
+                    
+                    
+                } else {
+                    NSLog("error occurred: %@", errorOrNil)
+                }
+                
+                
+                
+            },
+            withProgressBlock: nil
+        )
+
+        
+        
+        
+        
+        
         print (UIImage(named: "Image"));
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         //clotharray.append(item1);
         super.viewDidLoad()
@@ -69,15 +81,14 @@ var clotharray: [Cloths] = [Cloths]();
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print (self.clotharray.count);
-        return self.clotharray.count;
+        print (self.valueFromQuery);
+        return self.valueFromQuery.count;
+        
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! TableViewCell;
-        
-        let cloth = clotharray[indexPath.row];
-        cell.mSize.text = cloth.mSize;
+
         
         
         return cell;
